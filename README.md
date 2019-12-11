@@ -17,69 +17,66 @@
 
   ## DOCKER COMMAND
 
-  <dd>
-  stop container: docker stop containerID
-login: docker login
 
-create image:  docker image save -o IMAGE newmohib/verse_gapminder
-remove image: docker rmi image c7174e6ab181
-remove image force : docker rmi -f image c7174e6ab181
-build: docker build -t app/second-app .
-create tag : docker tag  babead534f77 newmohib/forth-app:testTag
-images : docker images
-push : docker push newmohib/forth-app
-container stop: docker stop e33d558a5c46
+  <dt>login:</dt>
+  <dd>docker login </dd>
+  <dt>stop container:</dt>
+  <dd>docker stop containerID </dd>
+   
+<dt>create image:</dt><dd>  docker image save -o IMAGE newmohib/verse_gapminder</dd>
+<dt>remove image:</dt><dd> docker rmi image c7174e6ab181</dd>
+remove image force :</dt><dd> docker rmi -f image c7174e6ab181</dd>
+<dt>build:</dt><dd> docker build -t app/second-app .</dd>
+<dt>create tag :</dt><dd> docker tag  babead534f77 newmohib/forth-app:testTag</dd>
+<dt>images :</dt><dd> docker images</dd>
+<dt>push :</dt><dd> docker push newmohib/forth-app</dd>
+<dt>container stop:</dt><dd> docker stop e33d558a5c46</dd>
 
-remove all image :docker system prune --all
-pull : docker pull newmohib/forth-app:testTag
-build: docker build -t newmohib/forth-app .
-run : docker run -p 3000:8080 -d newmohib/forth-app
-stop: docker stop 6ce87495c2f4
+<dt>remove all image :</dt><dd>docker system prune --all</dd>
+<dt>pull :</dt><dd> docker pull newmohib/forth-app:testTag</dd>
+<dt>build:</dt><dd> docker build -t newmohib/forth-app .</dd>
+<dt>run :</dt><dd> docker run -p 3000:8080 -d newmohib/forth-app</dd>
+<dt>stop:</dt><dd> docker stop 6ce87495c2f4</dd>
 
-create tar : docker save -o c:/new/forth-app.tar  newmohib/forth-app
-load tar: docker load -i c:/new/forth-app.tar
-run : docker run -p 3000:8080 -d newmohib/forth-app
-view container: docker ps
+  <dt>create tar :</dt><dd> docker save -o c:/new/forth-app.tar  newmohib/forth-app</dd>
+  <dt>load tar:</dt><dd> docker load -i c:/new/forth-app.tar</dd>
+ <dt> run :</dt><dd> docker run -p 3000:8080 -d newmohib/forth-app</dd>
+ <dt> view container:</dt><dd> docker ps</dd>
 
+  <dt>after send ter and run app :</dt>
 
-after send ter and run app :
+  <dt>load tar:</dt> <dd>docker load -i c:/new/forth-app.tar</dd>
+  <dt>run :</dt><dd> docker run -p 3000:8080 -d newmohib/forth-app</dd>
 
-load tar: docker load -i c:/new/forth-app.tar
-run : docker run -p 3000:8080 -d newmohib/forth-app
+  # after update code 
 
+  <dt>build:</dt>	 <dd>    docker build -t newmohib/forth-app .</dd>
+  <dt>create tag :</dt><dd> docker tag  babead534f77(image ID) newmohib/forth-app:testTag</dd>
+  <dt>push : </dt><dd>docker push newmohib/forth-app</dd>
 
-after update code 
+  # for build ==>> tar ==>> load run
 
-build:	     docker build -t newmohib/forth-app .
-create tag : docker tag  babead534f77(image ID) newmohib/forth-app:testTag
-push : docker push newmohib/forth-app
+  <dt>build:</dt>	 <dd>     docker build -t newmohib/abbvie-piap-api .</dd>
+  <dt>create tar :</dt> <dd> docker save -o  C:/new/project/all/abbvie/Docker/abbvie-piap-api.tar newmohib/abbvie-piap-api</dd>
+  <dt>load tar:</dt> <dd> docker load -i C:/new/project/all/abbvie/Docker/abbvie-piap-api.tar</dd>
+ <dt> run :</dt> <dd> docker run -p 3000:8080 -d newmohib/forth-app</dd>
 
-for build ==>> tar ==>> load run
+ <dt> Link:</dt> <dd> docker run -p 3001:3001 --link peaceful_germain -d  newmohib/abbvie-piap-admin</dd>
 
-build:	     docker build -t newmohib/abbvie-piap-api .
-create tar : docker save -o  C:/new/project/all/abbvie/Docker/abbvie-piap-api.tar newmohib/abbvie-piap-api
-load tar: docker load -i C:/new/project/all/abbvie/Docker/abbvie-piap-api.tar
-run : docker run -p 3000:8080 -d newmohib/forth-app
-
-Link: docker run -p 3001:3001 --link peaceful_germain -d  newmohib/abbvie-piap-admin
-
-compose with Build: docker-compose up --build
+ <dt> compose with Build:</dt> <dd>docker-compose up --build</dd>
 
 
+# Database
+ <dt> database connect :</dt> <dd> docker exec -it demo psql -U postgres</dd>
+ <dt> creat Database:</dt> <dd> test;</dd>
+ <dt> go database:</dt>  <dd>\c test;</dd>
+ <dt> create table:</dt> <dd> CREATE TABLE user(something init);</dd>
+ <dt> insert data:</dt> <dd> INSERT INTO user(something)values (1);</dd>
+  \dt
+ <dt> select all:</dt> <dd> select * from user ;</dd>
 
-============Database=====================
-database connect : docker exec -it demo psql -U postgres
-creat Database: test;
-go database: \c test;
-create table: CREATE TABLE user(something init);
-insert data: INSERT INTO user(something)values (1);
-\dt
-select all: select * from user ;
+ <dt> exit:</dt> <dd> \q</dd>
 
-exit: \q
+ <dt> pstgresql install:</dt>  <dd> docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres</dd>
 
-pstgresql install:  docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-
-pstgresql link with pgAdmin:   docker run -p 80:80 --link some-postgres -e "PGADMIN_DEFAULT_EMAIL=email@domain.com" -e "PGADMIN_DEFAULT_PASSWORD=postgres" -d dpage/pgadmin4
-
-  </dd>
+ <dt> pstgresql link with pgAdmin: </dt>  <dd> docker run -p 80:80 --link some-postgres -e "PGADMIN_DEFAULT_EMAIL=email@domain.com" -e "PGADMIN_DEFAULT_PASSWORD=postgres" -d dpage/pgadmin4</dd>
