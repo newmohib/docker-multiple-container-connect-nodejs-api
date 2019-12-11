@@ -1,11 +1,23 @@
 version: '3'
 services:
+  db:
+    image: postgres
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB : test
+    volumes:
+      - ./user/src/app
+    ports:
+      - 5432:5432
   product-service-api:
     build: ./Docker-app-2
     volumes:
        - ./user/src/app
     ports:
       - 4000:4000
+    depends_on:
+      - db
   product-service:
     build: ./Docker-app
     volumes:
@@ -14,3 +26,13 @@ services:
       - 3000:3000
     depends_on:
       - product-service-api
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - /root/.pgadmin
+    ports:
+      - 5050:80
+    restart: unless-stopped
